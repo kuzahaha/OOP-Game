@@ -1,26 +1,45 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {UnitFactory} from './classes/UnitsFactory';
+import UseAttack from './classes/Services/UseAttack';
 
-const App: React.FC = () => {
+
+let user1 = UnitFactory.create('Warrior');
+let user2 = UnitFactory.create('Warrior');
+
+
+class App extends React.Component {
+
+  constructor(props: any) {
+    super(props);
+    this.state = {isAttacked: false};
+  }
+
+  public attacking = () => {
+    let attacking = new UseAttack();
+    attacking.useAttack(user1,user2);
+    this.setState({isAttacked: !true});
+
+ }
+  public render(){
+  // let units = [
+  //   UnitFactory.create('Archer'),UnitFactory.create('Archer'),UnitFactory.create('Archer'),
+  //   UnitFactory.create('Archer'),UnitFactory.create('Archer'),UnitFactory.create('Archer'),
+  //   UnitFactory.create('Archer'),UnitFactory.create('Archer'),UnitFactory.create('Archer')
+  // ];
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="Area">
+     <div className= "Rows"><div className = "Fields" id ="1" onClick={this.attacking}>{user1.getUnitHp.getCurrentHp()}</div ><div className = "Fields" id="2">{user2.getUnitHp.getCurrentHp()}</div><div className = "Fields"></div></div>
+     <div className= "Rows"><div className = "Fields" ></div ><div className = "Fields"></div><div className = "Fields"></div></div>
+     <div className= "Rows"><div className = "Fields" ></div ><div className = "Fields"></div><div className = "Fields"></div></div>
+     <br/>
+     <div className= "Rows"><div className = "Fields" ></div ><div className = "Fields"></div><div className = "Fields"></div></div>
+     <div className= "Rows"><div className = "Fields" ></div ><div className = "Fields"></div><div className = "Fields"></div></div>
+     <div className= "Rows"><div className = "Fields" ></div ><div className = "Fields"></div><div className = "Fields"></div></div>
     </div>
   );
 }
-
+}
 export default App;
