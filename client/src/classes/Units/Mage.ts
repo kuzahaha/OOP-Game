@@ -1,12 +1,10 @@
-
 import Unit from '../Unit';
 
-const hp=200;
-const damage=30;
+const hp: number = 100;
+const damage: number = 20;
 
-export default class  Mage extends Unit {
-    
-    constructor(id:number) {
-        super(id,hp,damage);
-    }
+export default class Mage extends Unit {
+  constructor(id: number) {
+    super(id, hp, damage);
+  }
 }
